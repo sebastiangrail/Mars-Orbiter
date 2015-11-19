@@ -15,6 +15,17 @@ public protocol QuotientType {
     typealias Denominator: UnitTrait
 }
 
+public struct UnitlessTrait: UnitTrait {
+    public typealias BaseTrait = UnitlessTrait
+    public static func toBaseUnit () -> Double {
+        return 1
+    }
+    
+    public static func abbreviation () -> String {
+        return "1"
+    }
+}
+
 public struct Quotient <T: UnitTrait, U: UnitTrait> : UnitTrait, QuotientType {
     public typealias Numerator = T
     public typealias Denominator = U
@@ -25,13 +36,20 @@ public struct Quotient <T: UnitTrait, U: UnitTrait> : UnitTrait, QuotientType {
     }
 }
 
+public func reciprocal <T: UnitTrait> (x: Unit<Quotient<UnitlessTrait, T>>) -> Unit<T> {
+    return Unit<T>(1/x.value)
+}
+
+public func reciprocal <T: UnitTrait, U: UnitTrait> (x: Unit<Quotient<T, U>>) ->  Unit<Quotient<U, T>> {
+    return Unit<Quotient<U, T>>(1/x.value)
+}
+
 public extension Unit where Trait: QuotientType {
     func to <U: protocol<UnitTrait, QuotientType> where U.Numerator.BaseTrait == Trait.Numerator.BaseTrait, U.Denominator.BaseTrait == Trait.Denominator.BaseTrait> (type: Unit<U>.Type) -> Unit<U> {
         let ownBaseFactor = Trait.Numerator.toBaseUnit() / Trait.Denominator.toBaseUnit()
         let otherBaseFactor = U.Numerator.toBaseUnit() / U.Denominator.toBaseUnit()
         return Unit<U>(value * ownBaseFactor / otherBaseFactor)
     }
-    
 }
 
 public struct Product <T: UnitTrait, U: UnitTrait> : UnitTrait {
@@ -39,31 +57,4 @@ public struct Product <T: UnitTrait, U: UnitTrait> : UnitTrait {
     public static func abbreviation() -> String {
         return "\(T.abbreviation())*\(U.abbreviation())"
     }
-}
-
-func * <Trait1: UnitTrait, Trait2: UnitTrait> (lhs: Unit<Trait1>, rhs: Unit<Trait2>) -> Unit<Product<Trait1, Trait2>> {
-    return Unit<Product<Trait1, Trait2>>(lhs.value * rhs.value)
-}
-
-func / <Trait1: UnitTrait, Trait2: UnitTrait> (lhs: Unit<Trait1>, rhs: Unit<Trait2>) -> Unit<Quotient<Trait1, Trait2>> {
-    return Unit<Quotient<Trait1, Trait2>>(lhs.value / rhs.value)
-}
-
-// u/u = unitless
-public func / <T: UnitTrait> (lhs: Unit<T>, rhs: Unit<T>) -> Double {
-    return lhs.value / rhs.value
-}
-
-// (t/u)*u = t
-public func * <T: UnitTrait, U: UnitTrait> (lhs: Unit<Quotient<T,U>>, rhs: Unit<U>) -> Unit<T> {
-    return Unit<T>(lhs.value * rhs.value)
-}
-
-// scalar multiplication
-public func * <T: UnitTrait> (lhs: Unit<T>, rhs: Double) -> Unit<T> {
-    return Unit<T>(lhs.value * rhs)
-}
-
-public func * <T: UnitTrait> (lhs: Double, rhs: Unit<T>) ->Unit<T> {
-    return Unit<T>(lhs * rhs.value)
 }

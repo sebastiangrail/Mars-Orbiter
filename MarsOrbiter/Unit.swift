@@ -16,7 +16,7 @@ extension UnitTrait {
     public static func toBaseUnit () -> Double { return 1 }
 }
 
-public struct Unit<Trait: UnitTrait where Trait.BaseTrait: UnitTrait> {
+public struct Unit<Trait: UnitTrait> {
     let value: Double
     
     public init (_ value: Double) {
@@ -38,6 +38,13 @@ public extension Unit {
     }
     
     var squared: Unit<Product<Trait, Trait>> { return  Unit<Product<Trait, Trait>>(value * value) }
+}
+
+extension Unit: Equatable {
+}
+
+public func == <Trait: UnitTrait> (lhs: Unit<Trait>, rhs: Unit<Trait>) -> Bool {
+    return lhs.value == rhs.value
 }
 
 extension Unit: CustomStringConvertible {

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E1572D61C77AF1200068E1F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572D51C77AF1200068E1F /* Operators.swift */; };
+		9E9B792D1BFDE85400F420A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B792B1BFDE85400F420A5 /* Nimble.framework */; };
+		9E9B792E1BFDE85400F420A5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B792C1BFDE85400F420A5 /* Quick.framework */; };
+		9E9B79301BFDEAF200F420A5 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E9B792B1BFDE85400F420A5 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9E9B79311BFDEAF200F420A5 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E9B792C1BFDE85400F420A5 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9E9B79321BFDEAF200F420A5 /* MarsOrbiter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9ED3F18B1BF0AE3F00C84705 /* MarsOrbiter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9EB291301BF357FB002A07C1 /* CompoundUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E62516E1BF1FD11008BC119 /* CompoundUnits.swift */; };
 		9EB291311BF357FC002A07C1 /* CompoundUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E62516E1BF1FD11008BC119 /* CompoundUnits.swift */; };
 		9EB291321BF358B8002A07C1 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3F1C51BF0B02600C84705 /* Distance.swift */; };
@@ -31,8 +37,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9E9B792F1BFDEAE100F420A5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9E9B79301BFDEAF200F420A5 /* Nimble.framework in CopyFiles */,
+				9E9B79311BFDEAF200F420A5 /* Quick.framework in CopyFiles */,
+				9E9B79321BFDEAF200F420A5 /* MarsOrbiter.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9E1572D51C77AF1200068E1F /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		9E62516E1BF1FD11008BC119 /* CompoundUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompoundUnits.swift; sourceTree = "<group>"; };
+		9E9B792B1BFDE85400F420A5 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = SOURCE_ROOT; };
+		9E9B792C1BFDE85400F420A5 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = SOURCE_ROOT; };
 		9ED3F18B1BF0AE3F00C84705 /* MarsOrbiter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarsOrbiter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED3F18E1BF0AE3F00C84705 /* MarsOrbiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarsOrbiter.h; sourceTree = "<group>"; };
 		9ED3F1901BF0AE3F00C84705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +85,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ED3F1961BF0AE4000C84705 /* MarsOrbiter.framework in Frameworks */,
+				9E9B792D1BFDE85400F420A5 /* Nimble.framework in Frameworks */,
+				9E9B792E1BFDE85400F420A5 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +128,7 @@
 				9ED3F1901BF0AE3F00C84705 /* Info.plist */,
 				9ED3F1C11BF0AF1500C84705 /* Unit.swift */,
 				9E62516E1BF1FD11008BC119 /* CompoundUnits.swift */,
+				9E1572D51C77AF1200068E1F /* Operators.swift */,
 				9ED3F1C51BF0B02600C84705 /* Distance.swift */,
 				9ED3F1C81BF0B2F400C84705 /* Time.swift */,
 			);
@@ -111,6 +138,8 @@
 		9ED3F1991BF0AE4000C84705 /* MarsOrbiterTests */ = {
 			isa = PBXGroup;
 			children = (
+				9E9B792B1BFDE85400F420A5 /* Nimble.framework */,
+				9E9B792C1BFDE85400F420A5 /* Quick.framework */,
 				9ED3F19A1BF0AE4000C84705 /* MarsOrbiterTests.swift */,
 				9ED3F19C1BF0AE4000C84705 /* Info.plist */,
 			);
@@ -173,6 +202,7 @@
 				9ED3F1911BF0AE4000C84705 /* Sources */,
 				9ED3F1921BF0AE4000C84705 /* Frameworks */,
 				9ED3F1931BF0AE4000C84705 /* Resources */,
+				9E9B792F1BFDEAE100F420A5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -272,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EB291341BF35914002A07C1 /* Time.swift in Sources */,
+				9E1572D61C77AF1200068E1F /* Operators.swift in Sources */,
 				9EB291321BF358B8002A07C1 /* Distance.swift in Sources */,
 				9EB291301BF357FB002A07C1 /* CompoundUnits.swift in Sources */,
 				9ED3F1C21BF0AF1500C84705 /* Unit.swift in Sources */,
@@ -437,6 +468,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = MarsOrbiterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.grail.sebastian.MarsOrbiterTests;
@@ -448,6 +483,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = MarsOrbiterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.grail.sebastian.MarsOrbiterTests;
