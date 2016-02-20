@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9E1572D61C77AF1200068E1F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572D51C77AF1200068E1F /* Operators.swift */; };
 		9E1572D81C781E8600068E1F /* Mass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572D71C781E8600068E1F /* Mass.swift */; };
+		9E1572DA1C787E7000068E1F /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572D91C787E7000068E1F /* Area.swift */; };
+		9E1572DC1C787E8800068E1F /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572DB1C787E8800068E1F /* Volume.swift */; };
+		9E1572DE1C787EFA00068E1F /* MultidimensionalUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572DD1C787EFA00068E1F /* MultidimensionalUnits.swift */; };
 		9E9B792D1BFDE85400F420A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B792B1BFDE85400F420A5 /* Nimble.framework */; };
 		9E9B792E1BFDE85400F420A5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B792C1BFDE85400F420A5 /* Quick.framework */; };
 		9E9B79301BFDEAF200F420A5 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E9B792B1BFDE85400F420A5 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -56,6 +59,9 @@
 /* Begin PBXFileReference section */
 		9E1572D51C77AF1200068E1F /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		9E1572D71C781E8600068E1F /* Mass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mass.swift; sourceTree = "<group>"; };
+		9E1572D91C787E7000068E1F /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		9E1572DB1C787E8800068E1F /* Volume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
+		9E1572DD1C787EFA00068E1F /* MultidimensionalUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultidimensionalUnits.swift; sourceTree = "<group>"; };
 		9E62516E1BF1FD11008BC119 /* CompoundUnits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompoundUnits.swift; sourceTree = "<group>"; };
 		9E9B792B1BFDE85400F420A5 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		9E9B792C1BFDE85400F420A5 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = SOURCE_ROOT; };
@@ -129,9 +135,12 @@
 				9ED3F18E1BF0AE3F00C84705 /* MarsOrbiter.h */,
 				9ED3F1901BF0AE3F00C84705 /* Info.plist */,
 				9ED3F1C11BF0AF1500C84705 /* Unit.swift */,
+				9E1572DD1C787EFA00068E1F /* MultidimensionalUnits.swift */,
 				9E62516E1BF1FD11008BC119 /* CompoundUnits.swift */,
 				9E1572D51C77AF1200068E1F /* Operators.swift */,
 				9ED3F1C51BF0B02600C84705 /* Distance.swift */,
+				9E1572D91C787E7000068E1F /* Area.swift */,
+				9E1572DB1C787E8800068E1F /* Volume.swift */,
 				9E1572D71C781E8600068E1F /* Mass.swift */,
 				9ED3F1C81BF0B2F400C84705 /* Time.swift */,
 			);
@@ -305,11 +314,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EB291341BF35914002A07C1 /* Time.swift in Sources */,
+				9E1572DA1C787E7000068E1F /* Area.swift in Sources */,
 				9E1572D61C77AF1200068E1F /* Operators.swift in Sources */,
 				9EB291321BF358B8002A07C1 /* Distance.swift in Sources */,
 				9EB291301BF357FB002A07C1 /* CompoundUnits.swift in Sources */,
+				9E1572DE1C787EFA00068E1F /* MultidimensionalUnits.swift in Sources */,
 				9ED3F1C21BF0AF1500C84705 /* Unit.swift in Sources */,
 				9E1572D81C781E8600068E1F /* Mass.swift in Sources */,
+				9E1572DC1C787E8800068E1F /* Volume.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

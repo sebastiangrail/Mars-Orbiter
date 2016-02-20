@@ -8,6 +8,7 @@
 
 public protocol UnitTrait {
     typealias BaseTrait
+    typealias Dimension = One
     static func toBaseUnit () -> Double
     static func abbreviation () -> String
 }
@@ -17,7 +18,7 @@ extension UnitTrait {
 }
 
 public struct Unit<Trait: UnitTrait> {
-    let value: Double
+    public let value: Double
     
     public init (_ value: Double) {
         self.value = value
@@ -25,7 +26,7 @@ public struct Unit<Trait: UnitTrait> {
 }
 
 public extension Unit {
-    func to <U: UnitTrait where U.BaseTrait == Trait.BaseTrait> (type: Unit<U>.Type) -> Unit<U> {
+    func to <U: UnitTrait where U.BaseTrait == Trait.BaseTrait, U.Dimension == Trait.Dimension> (type: Unit<U>.Type) -> Unit<U> {
         return Unit<U>(value * Trait.toBaseUnit() / U.toBaseUnit())
     }
     

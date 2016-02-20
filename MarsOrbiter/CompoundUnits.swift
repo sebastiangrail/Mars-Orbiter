@@ -6,11 +6,9 @@
 //  Copyright © 2015 Sebastian Grail. All rights reserved.
 //
 
-public func square <T: UnitTrait> (type: Unit<T>) -> Unit<Product<T, T>>.Type {
-    return Unit<Product<T, T>>.self
-}
+// MARK: - Quotients
 
-public protocol QuotientType {
+public protocol QuotientTraitType: UnitTrait {
     typealias Numerator: UnitTrait
     typealias Denominator: UnitTrait
 }
@@ -26,7 +24,7 @@ public struct UnitlessTrait: UnitTrait {
     }
 }
 
-public struct Quotient <T: UnitTrait, U: UnitTrait> : UnitTrait, QuotientType {
+public struct Quotient <T: UnitTrait, U: UnitTrait> : UnitTrait, QuotientTraitType {
     public typealias Numerator = T
     public typealias Denominator = U
     
@@ -44,12 +42,26 @@ public func reciprocal <T: UnitTrait, U: UnitTrait> (x: Unit<Quotient<T, U>>) ->
     return Unit<Quotient<U, T>>(1/x.value)
 }
 
-public extension Unit where Trait: QuotientType {
-    func to <U: protocol<UnitTrait, QuotientType> where U.Numerator.BaseTrait == Trait.Numerator.BaseTrait, U.Denominator.BaseTrait == Trait.Denominator.BaseTrait> (type: Unit<U>.Type) -> Unit<U> {
+public extension Unit where Trait: QuotientTraitType {
+    func to <U: QuotientTraitType
+        where U.Numerator.BaseTrait   == Trait.Numerator.BaseTrait,
+              U.Denominator.BaseTrait == Trait.Denominator.BaseTrait,
+              U.Numerator.Dimension   == Trait.Numerator.Dimension,
+              U.Denominator.Dimension == Trait.Denominator.Dimension>
+        (type: Unit<U>.Type) -> Unit<U>
+    {
         let ownBaseFactor = Trait.Numerator.toBaseUnit() / Trait.Denominator.toBaseUnit()
         let otherBaseFactor = U.Numerator.toBaseUnit() / U.Denominator.toBaseUnit()
         return Unit<U>(value * ownBaseFactor / otherBaseFactor)
     }
+}
+
+
+// MARK: - Products
+
+public protocol ProductTraitType: UnitTrait {
+    typealias Left: UnitTrait
+    typealias Right: UnitTrait
 }
 
 public struct Product <T: UnitTrait, U: UnitTrait> : UnitTrait {
@@ -57,4 +69,30 @@ public struct Product <T: UnitTrait, U: UnitTrait> : UnitTrait {
     public static func abbreviation() -> String {
         return "\(T.abbreviation())*\(U.abbreviation())"
     }
+}
+
+extension Product: ProductTraitType {
+    public typealias Left = T
+    public typealias Right = U
+}
+
+public func square <T: UnitTrait> (type: Unit<T>.Type) -> Unit<Product<T, T>>.Type {
+    return Unit<Product<T, T>>.self
+}
+
+public extension Unit where Trait: ProductTraitType {
+    func to <U: ProductTraitType
+        where U.Left.BaseTrait  == Trait.Left.BaseTrait,
+              U.Left.Dimension  == Trait.Left.Dimension,
+              U.Right.BaseTrait == Trait.Right.BaseTrait,
+              U.Right.Dimension == Trait.Right.Dimension
+        >
+        (type: Unit<U>.Type)
+        -> Unit<U>
+    {
+        let ownBaseFactor = Trait.Left.toBaseUnit() * Trait.Right.toBaseUnit()
+        let otherBaseFactor = U.Left.toBaseUnit() * U.Right.toBaseUnit()
+        return Unit<U>(value * ownBaseFactor / otherBaseFactor)
+    }
+ 
 }
