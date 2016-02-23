@@ -74,11 +74,40 @@ public func / <Trait1: UnitTrait, Trait2: UnitTrait> (lhs: Unit<Trait1>, rhs: Un
     return Unit<Trait2>(lhs.value / rhs.value)
 }
 
+// (T*U) / T = U
+public func / <Trait1: UnitTrait, Trait2: UnitTrait> (lhs: Unit<Product<Trait1, Trait2>>, rhs: Unit<Trait1>) -> Unit<Trait2> {
+    return Unit<Trait2>(lhs.value / rhs.value)
+}
 
+// (U*T) / T = U
+public func / <Trait1: UnitTrait, Trait2: UnitTrait> (lhs: Unit<Product<Trait1, Trait2>>, rhs: Unit<Trait2>) -> Unit<Trait1> {
+    return Unit<Trait1>(lhs.value / rhs.value)
+}
 
+// (T*T)/T is ambiguous because of the two defintions above
+// (T*T) / T = T
+public func / <Trait: UnitTrait> (lhs: Unit<Product<Trait, Trait>>, rhs: Unit<Trait>) -> Unit<Trait> {
+    return Unit<Trait>(lhs.value / rhs.value)
+}
 
+// (T*U)*V / T = U*V
+public func / <Trait1: UnitTrait, Trait2: UnitTrait, Trait3: UnitTrait> (lhs: Unit<Product<Product<Trait1, Trait2>, Trait3>>, rhs: Unit<Trait1>) -> Unit<Product<Trait2, Trait3>> {
+    return Unit<Product<Trait2, Trait3>>(lhs.value / rhs.value)
+}
 
+// (T*U)*V / U = T*V
+public func / <Trait1: UnitTrait, Trait2: UnitTrait, Trait3: UnitTrait> (lhs: Unit<Product<Product<Trait1, Trait2>, Trait3>>, rhs: Unit<Trait2>) -> Unit<Product<Trait1, Trait3>> {
+    return Unit<Product<Trait1, Trait3>>(lhs.value / rhs.value)
+}
 
+// V*(T*U) / T = U*V
+public func / <Trait1: UnitTrait, Trait2: UnitTrait, Trait3: UnitTrait> (lhs: Unit<Product<Trait1, Product<Trait2, Trait3>>>, rhs: Unit<Trait2>) -> Unit<Product<Trait1, Trait3>> {
+    return Unit<Product<Trait1, Trait3>>(lhs.value / rhs.value)
+}
 
+// V*(T*U) / U = T*V
+public func / <Trait1: UnitTrait, Trait2: UnitTrait, Trait3: UnitTrait> (lhs: Unit<Product<Trait1, Product<Trait2, Trait3>>>, rhs: Unit<Trait3>) -> Unit<Product<Trait1, Trait2>> {
+    return Unit<Product<Trait1, Trait2>>(lhs.value / rhs.value)
+}
 
 

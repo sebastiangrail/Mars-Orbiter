@@ -24,6 +24,7 @@ private func haveType <T> (type: T.Type) -> Nimble.MatcherFunc<T> {
     }
 }
 
+private typealias TestUnit = Unit<TestTraitA>
 private struct TestTraitA: UnitTrait {
     typealias BaseTrait = TestTraitA
     
@@ -161,6 +162,55 @@ class DivisionSpec: QuickSpec {
         describe("T / (T/U)") {
             it("is U") {
                 expect(Meter(1) / Meter(1).per(Second)).to(haveType(Second))
+            }
+        }
+        
+        describe("(T*U) / T") {
+            it("is U") {
+                let x = Meter(1) * Second(1)
+                expect(x / Meter(1)).to(haveType(Second))
+            }
+        }
+        
+        describe("(T*U) / U") {
+            it("is T") {
+                let x = Meter(1) * Second(1)
+                expect(x / Second(1)).to(haveType(Meter))
+            }
+        }
+        
+        describe("(T*T) / T") {
+            it("is T") {
+                let x = Meter(1) * Meter(1)
+                expect(x / Meter(1)).to(haveType(Meter))
+            }
+        }
+        
+        describe("(T*U)*V / T") {
+            it("is U*V") {
+                let x = (Meter(1) * Second(1)) * TestUnit(1)
+                expect(x / Meter(1)).to(haveType(Unit<Product<SecondTrait, TestTraitA>>))
+            }
+        }
+        
+        describe("(T*U)*V / U") {
+            it("is T*V") {
+                let x = (Meter(1) * Second(1)) * TestUnit(1)
+                expect(x / Second(1)).to(haveType(Unit<Product<MeterTrait, TestTraitA>>))
+            }
+        }
+        
+        describe("V*(T*U) / T") {
+            it("is V*U") {
+                let x = TestUnit(1) * (Meter(1) * Second(1))
+                expect(x / Meter(1)).to(haveType(Unit<Product<TestTraitA, SecondTrait>>))
+            }
+        }
+        
+        describe("V*(T*U) / U") {
+            it("is V*T") {
+                let x = TestUnit(1) * (Meter(1) * Second(1))
+                expect(x / Second(1)).to(haveType(Unit<Product<TestTraitA, MeterTrait>>))
             }
         }
         
