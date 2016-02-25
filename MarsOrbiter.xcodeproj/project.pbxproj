@@ -12,6 +12,11 @@
 		9E1572DA1C787E7000068E1F /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572D91C787E7000068E1F /* Area.swift */; };
 		9E1572DC1C787E8800068E1F /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572DB1C787E8800068E1F /* Volume.swift */; };
 		9E1572DE1C787EFA00068E1F /* MultidimensionalUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572DD1C787EFA00068E1F /* MultidimensionalUnits.swift */; };
+		9E95C8011C7FA86300FD560F /* MultidimensionalUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572DD1C787EFA00068E1F /* MultidimensionalUnits.swift */; };
+		9E95C8021C7FA86D00FD560F /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572D51C77AF1200068E1F /* Operators.swift */; };
+		9E95C8031C7FA87100FD560F /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572D91C787E7000068E1F /* Area.swift */; };
+		9E95C8041C7FA87500FD560F /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572DB1C787E8800068E1F /* Volume.swift */; };
+		9E95C8051C7FA87800FD560F /* Mass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1572D71C781E8600068E1F /* Mass.swift */; };
 		9E9B792D1BFDE85400F420A5 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B792B1BFDE85400F420A5 /* Nimble.framework */; };
 		9E9B792E1BFDE85400F420A5 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B792C1BFDE85400F420A5 /* Quick.framework */; };
 		9E9B79301BFDEAF200F420A5 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E9B792B1BFDE85400F420A5 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -342,9 +347,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EB291351BF35915002A07C1 /* Time.swift in Sources */,
+				9E95C8031C7FA87100FD560F /* Area.swift in Sources */,
+				9E95C8051C7FA87800FD560F /* Mass.swift in Sources */,
+				9E95C8011C7FA86300FD560F /* MultidimensionalUnits.swift in Sources */,
 				9EB291331BF358B8002A07C1 /* Distance.swift in Sources */,
 				9EB291311BF357FC002A07C1 /* CompoundUnits.swift in Sources */,
 				9ED3F1C31BF0AF1500C84705 /* Unit.swift in Sources */,
+				9E95C8021C7FA86D00FD560F /* Operators.swift in Sources */,
+				9E95C8041C7FA87500FD560F /* Volume.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
